@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <main>
       <h1>✅ Todo App</h1>
-
       <div className="input-group">
         <input
           type="text"
@@ -25,7 +24,6 @@ export default function Home() {
         />
         <button onClick={addTodo}>Add</button>
       </div>
-
       {todos.length === 0 ? (
         <p className="empty">No todos yet ✨</p>
       ) : (
