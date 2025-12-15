@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function Home() {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState<string[]>([]);
 
   const addTodo = () => {
     if (!todo.trim()) return;
     setTodos([...todos, todo]);
-    setTodo("");
+    setTodo('');
   };
 
   return (
     <main>
-      <h1>Todo App</h1>
+      <h1>✅ Todo App</h1>
 
       <div className="input-group">
         <input
