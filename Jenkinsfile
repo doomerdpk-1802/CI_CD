@@ -12,6 +12,7 @@ pipeline {
         script {
           load 'Jenkins/checkout.groovy'
           load 'Jenkins/install.groovy'
+          load 'Jenkins/auditScan.groovy'
           load 'Jenkins/lint.groovy'
           load 'Jenkins/test.groovy'
           load 'Jenkins/build.groovy'
