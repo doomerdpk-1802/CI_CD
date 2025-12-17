@@ -1,5 +1,3 @@
-def call() {
-  stage('Install Dependencies') {
-    sh 'npm ci'
-  }
+stage('Install Dependencies') {
+  sh 'npm ci'
 }

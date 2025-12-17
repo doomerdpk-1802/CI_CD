@@ -1,5 +1,3 @@
-def call() {
-  stage('Checkout Code') {
-    checkout scm
-  }
+stage('Checkout') {
+  checkout scm
 }
