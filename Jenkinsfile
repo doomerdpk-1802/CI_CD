@@ -1,9 +1,3 @@
-def checkoutStage = load 'Jenkins/checkout.groovy'
-def installStage  = load 'Jenkins/install.groovy'
-def lintStage     = load 'Jenkins/lint.groovy'
-def testStage     = load 'Jenkins/test.groovy'
-def buildStage    = load 'Jenkins/build.groovy'
-
 pipeline {
   agent any
 
@@ -12,24 +6,29 @@ pipeline {
   }
 
   stages {
+
     stage('Checkout') {
-      steps { script { checkoutStage() } }
+      steps {
+        checkout scm
+      }
     }
 
-    stage('Install') {
-      steps { script { installStage() } }
-    }
+    stage('CI Pipeline') {
+      steps {
+        script {
+          def checkoutStage = load 'jenkins/checkout.groovy'
+          def installStage  = load 'jenkins/install.groovy'
+          def lintStage     = load 'jenkins/lint.groovy'
+          def testStage     = load 'jenkins/test.groovy'
+          def buildStage    = load 'jenkins/build.groovy'
 
-    stage('Lint') {
-      steps { script { lintStage() } }
-    }
-
-    stage('Test') {
-      steps { script { testStage() } }
-    }
-
-    stage('Build') {
-      steps { script { buildStage() } }
+          checkoutStage()
+          installStage()
+          lintStage()
+          testStage()
+          buildStage()
+        }
+      }
     }
   }
 
