@@ -1,3 +1,9 @@
+def checkoutStage = load 'Jenkins/checkout.groovy'
+def installStage  = load 'Jenkins/install.groovy'
+def lintStage     = load 'Jenkins/lint.groovy'
+def testStage     = load 'Jenkins/test.groovy'
+def buildStage    = load 'Jenkins/build.groovy'
+
 pipeline {
   agent any
 
@@ -6,40 +12,25 @@ pipeline {
   }
 
   stages {
-
-    stage('Checkout Code') {
-      steps {
-        checkout scm
-      }
+    stage('Checkout') {
+      steps { script { checkoutStage() } }
     }
 
-    stage('Install Dependencies') {
-      steps {
-        sh 'npm ci'
-      }
+    stage('Install') {
+      steps { script { installStage() } }
     }
 
     stage('Lint') {
-      steps {
-        sh 'npm run lint'
-      }
+      steps { script { lintStage() } }
     }
 
     stage('Test') {
-      when {
-        expression { fileExists('package.json') }
-      }
-      steps {
-        sh 'npm test || echo "No tests found"'
-      }
+      steps { script { testStage() } }
     }
 
-    stage('Build Next.js App') {
-      steps {
-        sh 'npm run build'
-      }
+    stage('Build') {
+      steps { script { buildStage() } }
     }
-
   }
 
   post {
