@@ -1,0 +1,6 @@
+sonar.projectKey=
+sonar.projectName=
+sonar.sources=
+sonar.exclusions=node_modules/**,.next/**,coverage/**
+sonar.host.url=
+sonar.login=
