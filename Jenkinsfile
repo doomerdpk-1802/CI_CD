@@ -16,11 +16,11 @@ pipeline {
     stage('CI Pipeline') {
       steps {
         script {
-          def checkoutStage = load 'jenkins/checkout.groovy'
-          def installStage  = load 'jenkins/install.groovy'
-          def lintStage     = load 'jenkins/lint.groovy'
-          def testStage     = load 'jenkins/test.groovy'
-          def buildStage    = load 'jenkins/build.groovy'
+          def checkoutStage = load 'Jenkins/checkout.groovy'
+          def installStage  = load 'Jenkins/install.groovy'
+          def lintStage     = load 'Jenkins/lint.groovy'
+          def testStage     = load 'Jenkins/test.groovy'
+          def buildStage    = load 'Jenkins/build.groovy'
 
           checkoutStage()
           installStage()
